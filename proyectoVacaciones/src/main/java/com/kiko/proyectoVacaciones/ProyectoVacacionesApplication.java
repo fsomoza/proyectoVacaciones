@@ -30,7 +30,7 @@ public class ProyectoVacacionesApplication {
 	@Bean
 	public CommandLineRunner initData(DeveloperService service,EventRepository repository) {
 		return args -> {
-			
+			LocalDateTime dt5PorElCuloTeLaHinco;
 			LocalDateTime dt1 
             = LocalDateTime 
                   .parse("2018-11-03T12:45:30"); 
