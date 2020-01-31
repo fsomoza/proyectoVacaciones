@@ -9,7 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.kiko.proyectoVacaciones.model.Developer;
 import com.kiko.proyectoVacaciones.model.Event;
@@ -48,12 +48,16 @@ public class ProyectoVacacionesApplication {
 			repository.save(event);
 
 			Developer usuario = new Developer("kiko", "666666666", 
-					"kiko_somotri@hotmail.es", null,"admin","D",null);
+					"kiko_somotri@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","D",null);
 			usuario.setEvent(event);
 			
+			Developer developer2 = new Developer("jayz", "666666666", 
+					"jay_z@hotmail.es", "https://s3-us-east-2.amazonaws.com/enterate24backup/wp-content/uploads/2019/11/28205041/jay-z.jpg","admin","D",null);
 			
 			
 			usuario = service.insertarDeveloper(usuario);
+			
+			developer2 = service.insertarDeveloper(developer2);
 			
 			
 			
@@ -68,6 +72,8 @@ public class ProyectoVacacionesApplication {
 		    event = list.get(0);
 		    
 		    System.out.println(event.getText());
+		    
+//		    String email = SecurityContextHolder.getContext().getAuthentication().getName();
 		    
 		    
 			
