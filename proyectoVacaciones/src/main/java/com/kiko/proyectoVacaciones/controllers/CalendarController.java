@@ -7,10 +7,12 @@ import com.kiko.proyectoVacaciones.model.Developer;
 import com.kiko.proyectoVacaciones.model.Employee;
 import com.kiko.proyectoVacaciones.model.Event;
 import com.kiko.proyectoVacaciones.repository.EventRepository;
+import com.kiko.proyectoVacaciones.service.DeveloperService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -18,6 +20,8 @@ import java.time.LocalDateTime;
 
 @RestController
 public class CalendarController {
+	@Autowired
+	DeveloperService developerService;
 
     @Autowired
     EventRepository er;
@@ -47,6 +51,11 @@ public class CalendarController {
         e.setEnd(params.end);
        e.setText(params.text);
        er.save(e);
+       String email = SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		Developer developer = developerService.buscarPorEmail(email);
+		developer.setEvent(e);
+		developerService.updateDeveloperWithEvent(developer);
 
         return e;
     }

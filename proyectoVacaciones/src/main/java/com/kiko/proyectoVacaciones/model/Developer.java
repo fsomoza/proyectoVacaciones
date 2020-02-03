@@ -1,5 +1,6 @@
 package com.kiko.proyectoVacaciones.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,7 +14,7 @@ public class Developer extends Employee {
 	@ManyToOne
 	TeamManager teamManager;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="eventId",unique=true)
 	Event event;
 	

@@ -52,7 +52,7 @@ public class ProyectoVacacionesApplication {
 			usuario.setEvent(event);
 			
 			Developer developer2 = new Developer("jayz", "666666666", 
-					"jay_z@hotmail.es", "https://s3-us-east-2.amazonaws.com/enterate24backup/wp-content/uploads/2019/11/28205041/jay-z.jpg","admin","D",null);
+					"jay_z@hotmail.es", "https://s3-us-east-2.amazonaws.com/enterate24backup/wp-content/uploads/2019/11/28205041/jay-z.jpg","admin","T",null);
 			
 			
 			usuario = service.insertarDeveloper(usuario);
