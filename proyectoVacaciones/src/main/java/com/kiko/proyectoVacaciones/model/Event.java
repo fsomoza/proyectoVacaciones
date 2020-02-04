@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PreRemove;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +34,11 @@ public class Event {
 
 	String color;
 	
+	@PreRemove
+	public void nullifyDeveloper() {
+		developer.setEvent(null);
+		
+	}
 	
 
 	public Long getId() {

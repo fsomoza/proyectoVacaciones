@@ -13,6 +13,13 @@ public class TeamManager extends Employee {
 	@OneToMany(mappedBy="teamManager")
     List<Developer> developers;
 	
+	public TeamManager(String name, String telephone, String email, String image,String password,String role,List<Developer>developers) {
+		super(name, telephone, email, image,password,role);
+		this.developers = developers;
+		
+		
+	}
+	
 	
 	public List<Developer> getDevelopers(){
 		return this.developers;

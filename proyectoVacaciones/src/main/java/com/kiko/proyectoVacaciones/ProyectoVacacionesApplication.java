@@ -3,6 +3,7 @@ package com.kiko.proyectoVacaciones;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
@@ -13,7 +14,9 @@ import org.springframework.context.annotation.Bean;
 
 import com.kiko.proyectoVacaciones.model.Developer;
 import com.kiko.proyectoVacaciones.model.Event;
+import com.kiko.proyectoVacaciones.model.TeamManager;
 import com.kiko.proyectoVacaciones.repository.EventRepository;
+import com.kiko.proyectoVacaciones.repository.TeamManagerRepository;
 import com.kiko.proyectoVacaciones.service.DeveloperService;
 import com.kiko.proyectoVacaciones.upload.StorageService;
 
@@ -28,9 +31,9 @@ public class ProyectoVacacionesApplication {
 	
 	
 	@Bean
-	public CommandLineRunner initData(DeveloperService service,EventRepository repository) {
+	public CommandLineRunner initData(DeveloperService service,EventRepository repository,TeamManagerRepository tmRepository) {
 		return args -> {
-			LocalDateTime dt5PorElCuloTeLaHinco;
+			LocalDateTime dt5PorElCuloTeLaHincoMuchisimo;
 			LocalDateTime dt1 
             = LocalDateTime 
                   .parse("2018-11-03T12:45:30"); 
@@ -48,29 +51,49 @@ public class ProyectoVacacionesApplication {
 			repository.save(event);
 
 			Developer usuario = new Developer("kiko", "666666666", 
-					"kiko_somotri@hotmail.es", null,"admin","D",null);
+					"kiko_somotri@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","D",null);
 			usuario.setEvent(event);
 			
-			
-			
+			Developer developer2 = new Developer("jayz", "666666666", 
+					"jay_z@hotmail.es", "https://s3-us-east-2.amazonaws.com/enterate24backup/wp-content/uploads/2019/11/28205041/jay-z.jpg","admin","T",null);
 			usuario = service.insertarDeveloper(usuario);
 			
-			
-			
-			
+            developer2 = service.insertarDeveloper(developer2);
 			
 			List <Event> list;
-			
-			 list = (repository.findBetween(dt1, dt2));
+		
+			list = (repository.findBetween(dt1, dt2));
            
 			System.out.println(list);
 
 		    event = list.get(0);
 		    
 		    System.out.println(event.getText());
-		    
-		    
 			
+			
+			
+			
+			
+			 List<Developer> developers;
+				
+			developers = (service.buscarLosPorEmail("kiko_somotri@hotmail.es"));
+				
+		     
+		
+          	TeamManager teamManager = new TeamManager("paco", "666666666", 
+				"kiko_somotriko@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","D",null);
+          	
+          	teamManager.setDevelopers(developers);
+          
+          	
+          	
+		     tmRepository.save(teamManager);
+			
+			
+			
+			
+		    
+//		    String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
 		};
 

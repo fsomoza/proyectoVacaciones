@@ -14,7 +14,7 @@ public class Developer extends Employee {
 	TeamManager teamManager;
 	
 	@OneToOne
-	@JoinColumn(name="eventId",unique=true)
+	@JoinColumn(name="eventId")
 	Event event;
 	
 	public Developer(){}
