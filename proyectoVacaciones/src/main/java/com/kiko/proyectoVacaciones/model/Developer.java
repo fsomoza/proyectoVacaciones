@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PreRemove;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
@@ -14,8 +15,8 @@ public class Developer extends Employee {
 	@ManyToOne
 	TeamManager teamManager;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name="eventId",unique=true)
+	@OneToOne
+	@JoinColumn(name="eventId")
 	Event event;
 	
 	public Developer(){}
@@ -41,6 +42,8 @@ public class Developer extends Employee {
 	public void setEvent(Event event) {
 		this.event = event;
 	}
+	
+
 	
 	
 	
