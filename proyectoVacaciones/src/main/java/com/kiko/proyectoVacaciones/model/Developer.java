@@ -1,6 +1,7 @@
 package com.kiko.proyectoVacaciones.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -10,8 +11,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(referencedColumnName="idEmployee")
 public class Developer extends Employee {
 	
-	@ManyToOne
-	TeamManager teamManager;
+	@ManyToOne(fetch=FetchType.EAGER) 
+    TeamManager teamManager;
 	
 	@OneToOne
 	@JoinColumn(name="eventId")

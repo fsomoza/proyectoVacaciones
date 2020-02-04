@@ -83,6 +83,7 @@ public class ProyectoVacacionesApplication {
           	TeamManager teamManager = new TeamManager("paco", "666666666", 
 				"kiko_somotriko@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","D",null);
           	
+          	
           	teamManager.setDevelopers(developers);
           
           	

@@ -51,6 +51,10 @@ public class CalendarController {
         e.setEnd(params.end);
        e.setText(params.text);
        er.save(e);
+       
+       String email = SecurityContextHolder.getContext().getAuthentication().getName();
+       
+       
 
         return e;
     }
@@ -67,11 +71,12 @@ public class CalendarController {
         e.setStart(params.start);
         e.setEnd(params.end);
         er.save(e);
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+ String email = SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		Developer developer = developerService.buscarPorEmail(email);
 		developer.setEvent(e);
 		developerService.updateDeveloperWithEvent(developer);
+       
 
         return e;
     }
