@@ -19,10 +19,13 @@ public class Event {
 	@OneToOne(mappedBy="event")
 	Developer developer;
 	
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	Long id;
 	
+	String estado;
 	
 	String text;
 	
@@ -39,6 +42,9 @@ public class Event {
 		developer.setEvent(null);
 		
 	}
+	
+	
+	
 	
 
 	public Long getId() {
@@ -73,11 +79,24 @@ public class Event {
 		this.end = end;
 	}
 
+	public String getColor() { 
+		
+		return color; }
+
+	public void setColor(String color) { 
+		
+		this.color = color; }
+
+
+
 
 
 	
-
-	public String getColor() { return color; }
-
-	public void setColor(String color) { this.color = color; }
+	
+	
+	
+	
+	
+	
+	
 }

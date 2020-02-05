@@ -25,8 +25,9 @@
           <li class="nav-item"> <a class="nav-link" href="#">Pricing</a> </li>
           <li class="nav-item"> <a class="nav-link" href="#">About</a> </li>
           <li class="nav-item"> <a class="nav-link" href="#">FAQ</a> </li>
-        </ul> <a class="btn navbar-btn ml-md-2 btn-light text-dark">Contact us</a>
+        </ul> <a href="javascript:document.getElementById('logoutForm').submit()" class="btn navbar-btn ml-md-2 btn-light text-dark">LOG OUT</a>
       </div>
+      <form th:action="@{/auth/logout}" method="POST" id="logoutForm"></form>
     </div>
   </nav>
   <div class="py-5">
@@ -52,6 +53,7 @@
                   <th>Nombre</th>
                   <th>Email</th>
                   <th>Telefono</th>
+                  <th>Jefe</th>
                   
                 </tr>
               </thead>
@@ -61,6 +63,7 @@
                   <td><span th:text="${employee.name}"></td>
                   <td><span th:text="${employee.email}"></td>
                   <td><span th:text="${employee.telephone}"></td>
+                  <td><span th:text="${employee.teamManager.name}"></td>
                   <td></td>
                 </tr>
                 

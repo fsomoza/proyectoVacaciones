@@ -39,12 +39,12 @@ public class SeguridadConfig extends WebSecurityConfigurerAdapter{
 			.formLogin()
 			    
 				.defaultSuccessUrl("/public/index", true)
-				.loginProcessingUrl("/auth/login-post")
+				
 				.permitAll()
 				.and()
 			.logout()
-				.logoutUrl("/auth/logout") 
-				.logoutSuccessUrl("/public/index");
+				.logoutUrl("/auth/logout"); 
+				
 		
 		http.csrf().disable();
         http.headers().frameOptions().disable();
