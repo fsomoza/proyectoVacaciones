@@ -11,7 +11,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(referencedColumnName="idEmployee")
 public class Developer extends Employee {
 	
-	@ManyToOne(fetch=FetchType.EAGER) 
+	@ManyToOne 
     TeamManager teamManager;
 	
 	@OneToOne

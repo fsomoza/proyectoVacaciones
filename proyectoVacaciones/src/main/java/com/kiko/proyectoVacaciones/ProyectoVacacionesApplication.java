@@ -56,6 +56,31 @@ public class ProyectoVacacionesApplication {
 			
 			Developer developer2 = new Developer("jayz", "666666666", 
 					"jay_z@hotmail.es", "https://s3-us-east-2.amazonaws.com/enterate24backup/wp-content/uploads/2019/11/28205041/jay-z.jpg","admin","T",null);
+			
+			
+			
+			
+
+			
+				
+		     
+		
+         	TeamManager teamManager = new TeamManager("paco", "666666666", 
+				"kiko_somotriko@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","D",null);
+         	
+         	
+         	
+         
+         	
+         	
+		     tmRepository.save(teamManager);
+			
+			
+	       usuario.setTeamManager(teamManager);
+			
+			
+			
+			
 			usuario = service.insertarDeveloper(usuario);
 			
             developer2 = service.insertarDeveloper(developer2);
@@ -69,26 +94,18 @@ public class ProyectoVacacionesApplication {
 		    event = list.get(0);
 		    
 		    System.out.println(event.getText());
+		    
+		    List<Developer> lista = tmRepository.findDeveloperByTmId(2);
+		    
+		    
+		    Developer developer = lista.get(0);
+		    
+			System.out.println("este es el desarrollador " + developer.getName());
 			
 			
 			
 			
 			
-			 List<Developer> developers;
-				
-			developers = (service.buscarLosPorEmail("kiko_somotri@hotmail.es"));
-				
-		     
-		
-          	TeamManager teamManager = new TeamManager("paco", "666666666", 
-				"kiko_somotriko@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","D",null);
-          	
-          	
-          	teamManager.setDevelopers(developers);
-          
-          	
-          	
-		     tmRepository.save(teamManager);
 			
 			
 			
