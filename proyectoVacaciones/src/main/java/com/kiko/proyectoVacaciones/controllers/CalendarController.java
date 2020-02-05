@@ -54,6 +54,9 @@ public class CalendarController {
        
        String email = SecurityContextHolder.getContext().getAuthentication().getName();
        
+       Developer developer = developerService.buscarPorEmail(email);
+		developer.setEvent(e);
+		developerService.updateDeveloperWithEvent(developer);
        
 
         return e;
@@ -71,11 +74,7 @@ public class CalendarController {
         e.setStart(params.start);
         e.setEnd(params.end);
         er.save(e);
- String email = SecurityContextHolder.getContext().getAuthentication().getName();
-		
-		Developer developer = developerService.buscarPorEmail(email);
-		developer.setEvent(e);
-		developerService.updateDeveloperWithEvent(developer);
+
        
 
         return e;
