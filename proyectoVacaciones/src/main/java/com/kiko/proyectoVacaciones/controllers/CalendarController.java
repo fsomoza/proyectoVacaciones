@@ -49,9 +49,11 @@ public class CalendarController {
     Event createEvent(@RequestBody EventCreateParams params) {
 
         Event e = new Event();
-        e.setStart(params.start);
-        e.setEnd(params.end);
+       e.setStart(params.start);
+       e.setEnd(params.end);
        e.setText(params.text);
+       e.setColor("#ffe599");
+      
        er.save(e);
        
        String email = SecurityContextHolder.getContext().getAuthentication().getName();
