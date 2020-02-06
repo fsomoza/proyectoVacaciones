@@ -51,7 +51,7 @@ public class ProyectoVacacionesApplication {
 			repository.save(event);
 
 			Developer usuario = new Developer("kiko", "666666666", 
-					"kiko_somotri@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","T",null);
+					"kiko_somotri@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","D",null);
 			usuario.setEvent(event);
 			
 			Developer developer2 = new Developer("jayz", "666666666", 
@@ -66,7 +66,7 @@ public class ProyectoVacacionesApplication {
 		     
 		
          	TeamManager teamManager = new TeamManager("paco", "666666666", 
-				"kiko_somotriko@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","D",null);
+				"kiko_somotriko@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","T",null);
          	
          	
          	

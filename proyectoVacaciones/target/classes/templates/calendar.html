@@ -36,7 +36,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1 class=""> <span th:text="${'Crear solicitud de vacaciones para: ' + developer.name}"></h1>
+          <h1 class=""> <span th:text="${'Bienvenido ' + developer.name + ', aqui puedes crear tu solicitud de vacaciones'}"></h1>
         </div>
         <div class="col-md-6"></div>
       </div>
@@ -68,6 +68,7 @@
         <div id="dp"></div>
     </div>
 </div>
+
         </div>
       </div>
     </div>
@@ -75,7 +76,7 @@
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12"></div>
+        <div class="col-md-12"> </div> 
       </div>
     </div>
   </div>
@@ -132,11 +133,14 @@
                 success: function (data) {
                     dp.events.add(new DayPilot.Event(data));
                     dp.message("Solicitud enviada");
+                    window.location.href = "/public/index";
                 },
                 contentType: "application/json",
                 dataType: 'json'
             });
+            
         });
+        
     };
     dp.onEventMove = function (args) {
         var params = {
@@ -270,6 +274,8 @@
             dp.exportAs(format).download();
         });
     });
+    
+   
 
 </script>
  </body>
