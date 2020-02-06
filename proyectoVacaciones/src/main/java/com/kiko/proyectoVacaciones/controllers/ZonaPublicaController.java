@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kiko.proyectoVacaciones.model.Developer;
 import com.kiko.proyectoVacaciones.model.Employee;
+import com.kiko.proyectoVacaciones.model.Event;
+import com.kiko.proyectoVacaciones.service.DeveloperService;
 import com.kiko.proyectoVacaciones.service.EmployeeService;
 
 
@@ -22,6 +25,9 @@ import com.kiko.proyectoVacaciones.service.EmployeeService;
 public class ZonaPublicaController {
 	@Autowired
 	EmployeeService employeeService;
+	
+	@Autowired
+	DeveloperService developerService;
 //	@Autowired
 //	ProductoServicio productoServicio;
 //	
@@ -52,9 +58,23 @@ String email = SecurityContextHolder.getContext().getAuthentication().getName();
 	}
 	
 	
-	@GetMapping("/calendar")
-	public String calendar() {
-		return "calendar";
+	@GetMapping("/crearSolicitud")
+	public String crearSolicitud(Model model) {
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+		Developer developer = developerService.buscarPorEmail(email);
+		if (developer.getEvent() == null) {
+			model.addAttribute(developer);
+			Event event = developer.getEvent();
+			return "calendar";
+		}else {
+			model.addAttribute(developer);
+			Event event = developer.getEvent();
+			
+			return "pera";
+		}
+		
+		
+		
 	}
 	
 	

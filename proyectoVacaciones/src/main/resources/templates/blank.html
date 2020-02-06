@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse" id="navbar10">
         <ul class="navbar-nav ml-auto">
           <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"> <a class="nav-link" href="#">SOLICITUDES EMPLEADOS</a> </li>
-          <li sec:authorize="hasRole('ROLE_USER')" class="nav-item"> <a class="nav-link" th:href="@{/public/calendar}">Crear solicitud</a> </li>
+          <li sec:authorize="hasRole('ROLE_USER')" class="nav-item"> <a class="nav-link" th:href="@{/public/crearSolicitud}">Crear solicitud</a> </li>
           <li class="nav-item"> <a class="nav-link" href="#">Pricing</a> </li>
           <li class="nav-item"> <a class="nav-link" href="#">About</a> </li>
           <li class="nav-item"> <a class="nav-link" href="#">FAQ</a> </li>
@@ -63,7 +63,7 @@
                   <td><span th:text="${employee.name}"></td>
                   <td><span th:text="${employee.email}"></td>
                   <td><span th:text="${employee.telephone}"></td>
-                  <td><span th:text="${employee.teamManager.name}"></td>
+                  <td sec:authorize="hasRole('ROLE_ADMIN')"><span th:text="${employee.teamManager.name}"></td>
                   <td></td>
                 </tr>
                 
