@@ -15,14 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kiko.proyectoVacaciones.model.Developer;
 import com.kiko.proyectoVacaciones.model.Employee;
 import com.kiko.proyectoVacaciones.model.Event;
+import com.kiko.proyectoVacaciones.model.TeamManager;
 import com.kiko.proyectoVacaciones.service.DeveloperService;
 import com.kiko.proyectoVacaciones.service.EmployeeService;
+import com.kiko.proyectoVacaciones.service.TeamManagerService;
 
 
 
 @Controller
 @RequestMapping("/public")
 public class ZonaPublicaController {
+	
+	@Autowired
+	TeamManagerService teamManagerService;
 	@Autowired
 	EmployeeService employeeService;
 	
@@ -43,8 +48,17 @@ public class ZonaPublicaController {
 String email = SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		Employee employee = employeeService.buscarPorEmail(email);
-		model.addAttribute("employee", employee);	
-		return "blank";
+		
+		if (employee.getRole().equals("T")) {
+			TeamManager teamManager = teamManagerService.findTeamManager(email);
+			model.addAttribute("teamManager", teamManager);	
+			return "blank";
+		}else {
+			Developer developer = developerService.buscarPorEmail(email);
+			model.addAttribute("developer", developer);	
+			return "blank";
+		}
+		
 	}
 	
 	@GetMapping("/producto/{id}")

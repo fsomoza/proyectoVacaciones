@@ -45,7 +45,8 @@
   <div class="py-5" style="">
     <div class="container">
       <div class="row">
-        <div class="col-md-6" style=""><img class="img-fluid d-block w-25" th:src="${employee.image}"></div>
+        <div class="col-md-6" style=""><img sec:authorize="hasRole('ROLE_USER')" class="img-fluid d-block w-25" th:src="${developer.image}">
+        <img sec:authorize="hasRole('ROLE_ADMIN')" class="img-fluid d-block w-25" th:src="${teamManager.image}"></div>
         <div class="col-md-6" style="">
         <div class="table-responsive" >
             <table class="table">
@@ -55,17 +56,26 @@
                   <th>Nombre</th>
                   <th>Email</th>
                   <th>Telefono</th>
-                  <th>Jefe</th>
+                  <th sec:authorize="hasRole('ROLE_USER')">Jefe</th>
                   
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr sec:authorize="hasRole('ROLE_USER')">
                   
-                  <td><span th:text="${employee.name}"></td>
-                  <td><span th:text="${employee.email}"></td>
-                  <td><span th:text="${employee.telephone}"></td>
-                  <td sec:authorize="hasRole('ROLE_USER')"><span th:text="${employee.teamManager.name}"></td>
+                  <td><span th:text="${developer.name}"></span></td>
+                  <td><span th:text="${developer.email}"></span></td>
+                  <td><span th:text="${developer.telephone}"></span></td>
+                  <td><span th:text="${developer.teamManager.name}"></span></td>
+                  
+                </tr>
+                
+                <tr sec:authorize="hasRole('ROLE_ADMIN')">
+                  
+                  <td><span th:text="${teamManager.name}"></td>
+                  <td><span th:text="${teamManager.email}"></td>
+                  <td><span th:text="${teamManager.telephone}"></td>
+                  
                   <td></td>
                 </tr>
                 

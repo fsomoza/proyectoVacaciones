@@ -18,6 +18,7 @@ import com.kiko.proyectoVacaciones.model.TeamManager;
 import com.kiko.proyectoVacaciones.repository.EventRepository;
 import com.kiko.proyectoVacaciones.repository.TeamManagerRepository;
 import com.kiko.proyectoVacaciones.service.DeveloperService;
+import com.kiko.proyectoVacaciones.service.TeamManagerService;
 import com.kiko.proyectoVacaciones.upload.StorageService;
 
 
@@ -31,7 +32,7 @@ public class ProyectoVacacionesApplication {
 	
 	
 	@Bean
-	public CommandLineRunner initData(DeveloperService service,EventRepository repository,TeamManagerRepository tmRepository) {
+	public CommandLineRunner initData(DeveloperService service,EventRepository repository,TeamManagerService tmService) {
 		return args -> {
 			LocalDateTime dt5PorElCuloTeLaHincoMuchisimo;
 			LocalDateTime dt1 
@@ -73,7 +74,7 @@ public class ProyectoVacacionesApplication {
          
          	
          	
-		     tmRepository.save(teamManager);
+		     tmService.insertTeamManager(teamManager);
 			
 			
 	       usuario.setTeamManager(teamManager);
@@ -95,7 +96,7 @@ public class ProyectoVacacionesApplication {
 		    
 		    System.out.println(event.getText());
 		    
-		    List<Developer> lista = tmRepository.findDeveloperByTmId(2);
+		    List<Developer> lista = tmService.findTeamManagers(2);
 		    
 		    
 		    Developer developer = lista.get(0);
