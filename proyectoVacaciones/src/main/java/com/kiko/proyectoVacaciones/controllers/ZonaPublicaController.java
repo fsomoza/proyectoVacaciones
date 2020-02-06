@@ -84,7 +84,7 @@ String email = SecurityContextHolder.getContext().getAuthentication().getName();
 			model.addAttribute(developer);
 			Event event = developer.getEvent();
 			
-			return "pera";
+			return "alreadyHaveOne";
 		}
 		
 		

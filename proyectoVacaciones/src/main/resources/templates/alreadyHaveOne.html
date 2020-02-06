@@ -36,7 +36,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1 class=""> <span th:text="${'Bienvenido ' + developer.name + ', aqui puedes crear tu solicitud de vacaciones'}"></h1>
+          <h1 class=""> <span th:text="${'Bienvenido ' + developer.name + ', ya tienes una solicitud en estado pendiente, puedes modificarla o anularla.'}"></span></h1>
         </div>
         <div class="col-md-6"></div>
       </div>
@@ -106,7 +106,7 @@
     nav.onTimeRangeSelected = function(args) {
         dp.startDate = args.day;
         dp.update();
-        dp.events.load("/api/events");
+        dp.events.load("/solicitudPendiente");
     };
     nav.init();
 
@@ -114,34 +114,7 @@
     var dp = new DayPilot.Month("dp");
     dp.init();
     dp.eventEndSpec = "Date";
-    dp.onTimeRangeSelected = function (args) {
-        DayPilot.Modal.prompt("Enviar solicitud:", [[${developer.name}]]).then(function (modal) {
-            dp.clearSelection();
-            if (!modal.result) {
-                return;
-            }
-            var params = {
-                start: args.start.toString(),
-                end: args.end.toString(),
-                text: modal.result,
-                resource: args.resource
-            };
-            $.ajax({
-                type: 'POST',
-                url: '/api/events/create',
-                data: JSON.stringify(params),
-                success: function (data) {
-                    dp.events.add(new DayPilot.Event(data));
-                    dp.message("Solicitud enviada");
-                    window.location.href = "/public/index";
-                },
-                contentType: "application/json",
-                dataType: 'json'
-            });
-            
-        });
-        
-    };
+    
     dp.onEventMove = function (args) {
         var params = {
             id: args.e.id(),
@@ -200,6 +173,7 @@
                         success: function (data) {
                             dp.events.remove(e);
                             dp.message("Deleted");
+                            window.location.href = "/public/index";
                         },
                         contentType: "application/json",
                         dataType: 'json'
@@ -209,34 +183,7 @@
             {
                 text: "-"
             },
-            {
-                text: "Blue",
-                icon: "icon icon-blue",
-                color: "#a2c4c9",
-                onClick: function(args) { updateColor(args.source, args.item.color); }
-            },
-            {
-                text: "Green",
-                icon: "icon icon-green",
-                color: "#b6d7a8",
-                onClick: function(args) { updateColor(args.source, args.item.color); }
-            },
-            {
-                text: "Yellow",
-                icon: "icon icon-yellow",
-                color: "#ffe599",
-                onClick: function(args) { updateColor(args.source, args.item.color); }
-            },
-            {
-                text: "Red",
-                icon: "icon icon-red",
-                color: "#ea9999",
-                onClick: function(args) { updateColor(args.source, args.item.color); }
-            },            {
-                text: "Auto",
-                color: "auto",
-                onClick: function(args) { updateColor(args.source, args.item.color); }
-            },
+            
 
         ]
     });

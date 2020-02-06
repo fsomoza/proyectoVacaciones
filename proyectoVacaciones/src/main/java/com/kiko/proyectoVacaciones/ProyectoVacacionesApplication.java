@@ -53,7 +53,7 @@ public class ProyectoVacacionesApplication {
 
 			Developer usuario = new Developer("kiko", "666666666", 
 					"kiko_somotri@hotmail.es", "https://cdn.sincroguia.tv/uploads/programs/l/a/-/la-salchicha-peleona-202_SPA-73.jpg","admin","D",null);
-			usuario.setEvent(event);
+//			usuario.setEvent(event);
 			
 			Developer developer2 = new Developer("jayz", "666666666", 
 					"jay_z@hotmail.es", "https://s3-us-east-2.amazonaws.com/enterate24backup/wp-content/uploads/2019/11/28205041/jay-z.jpg","admin","D",null);

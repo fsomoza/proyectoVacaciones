@@ -21,6 +21,9 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 	
 	@Query("SELECT e from Event e where e.id = :id")
 	public Event findComoYoTeDigo(Long id);
+	
+	@Query("SELECT e from Event e where e.developer.email = :email")
+	public List<Event> findEventForDeveloper(String email);
 
 
 }

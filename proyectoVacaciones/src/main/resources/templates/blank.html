@@ -56,7 +56,7 @@
                   <th>Nombre</th>
                   <th>Email</th>
                   <th>Telefono</th>
-                  <th sec:authorize="hasRole('ROLE_USER')">Jefe</th>
+                  <th sec:authorize="hasRole('ROLE_USER')">Jefe de equipo</th>
                   
                 </tr>
               </thead>
@@ -72,9 +72,9 @@
                 
                 <tr sec:authorize="hasRole('ROLE_ADMIN')">
                   
-                  <td><span th:text="${teamManager.name}"></td>
-                  <td><span th:text="${teamManager.email}"></td>
-                  <td><span th:text="${teamManager.telephone}"></td>
+                  <td><span th:text="${teamManager.name}"></span></td>
+                  <td><span th:text="${teamManager.email}"></span></td>
+                  <td><span th:text="${teamManager.telephone}"></span></td>
                   
                   <td></td>
                 </tr>

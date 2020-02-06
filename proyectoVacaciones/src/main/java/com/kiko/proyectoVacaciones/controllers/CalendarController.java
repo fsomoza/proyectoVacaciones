@@ -42,6 +42,15 @@ public class CalendarController {
         
         
     }
+    
+    @GetMapping("/solicitudPendiente")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    Iterable<Event> rescuePendingEvent(){
+    	String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    	return er.findEventForDeveloper(email);
+    	
+    }
+    
 
     @PostMapping("/api/events/create")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
