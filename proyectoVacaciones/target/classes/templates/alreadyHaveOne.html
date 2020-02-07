@@ -99,19 +99,11 @@
 
 <script th:inline="javascript">
 
-    var nav = new DayPilot.Navigator("nav");
-    nav.showMonths = 3;
-    nav.skipMonths = 3;
-    nav.selectMode = "month";
-    nav.onTimeRangeSelected = function(args) {
-        dp.startDate = args.day;
-        dp.update();
-        dp.events.load("/solicitudPendiente");
-    };
-    nav.init();
-
+ 
 
     var dp = new DayPilot.Month("dp");
+    dp.startDate = [[${event.start}]];
+    dp.update();
     dp.init();
     dp.eventEndSpec = "Date";
     
@@ -189,7 +181,7 @@
     });
     dp.init();
 
-    dp.events.load("/api/events");
+    dp.events.load("/solicitudPendiente");
 
 
     function updateColor(e, color) {

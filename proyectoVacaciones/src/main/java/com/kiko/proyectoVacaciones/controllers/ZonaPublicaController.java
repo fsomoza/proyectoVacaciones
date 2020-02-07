@@ -81,9 +81,9 @@ String email = SecurityContextHolder.getContext().getAuthentication().getName();
 			Event event = developer.getEvent();
 			return "calendar";
 		}else {
-			model.addAttribute(developer);
-			Event event = developer.getEvent();
 			
+			Event event = developer.getEvent();
+			model.addAttribute(developer).addAttribute(event);
 			return "alreadyHaveOne";
 		}
 		
