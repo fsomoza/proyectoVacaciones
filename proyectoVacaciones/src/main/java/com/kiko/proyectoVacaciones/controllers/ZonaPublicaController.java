@@ -76,7 +76,7 @@ String email = SecurityContextHolder.getContext().getAuthentication().getName();
 			
 			Event event = developer.getEvent();
 			model.addAttribute(developer).addAttribute(event);
-			return "alreadyHaveOne";
+			return "modSolicitud";
 		}
 		
 		
