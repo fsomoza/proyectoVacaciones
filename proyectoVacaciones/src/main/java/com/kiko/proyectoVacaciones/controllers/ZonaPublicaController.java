@@ -61,15 +61,7 @@ String email = SecurityContextHolder.getContext().getAuthentication().getName();
 		
 	}
 	
-	@GetMapping("/producto/{id}")
-	public String showProduct(Model model, @PathVariable Long id) {
-//		Producto result = productoServicio.findById(id); 
-//		if (result != null) {
-//			model.addAttribute("producto", result);
-//			return "producto";
-//		}
-		return "redirect:/public";
-	}
+
 	
 	
 	@GetMapping("/crearSolicitud")
