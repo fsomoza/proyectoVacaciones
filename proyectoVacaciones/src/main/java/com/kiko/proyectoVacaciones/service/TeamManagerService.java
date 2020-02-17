@@ -33,4 +33,10 @@ public class TeamManagerService {
 		return tmRepository.findDeveloperByTmId(id);
 	}
 	
+	
+	public List<Developer> findMyDevelopers(long id){
+		return null;
+		
+	}
+	
 }

@@ -6,8 +6,10 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.kiko.proyectoVacaciones.model.Developer;
 import com.kiko.proyectoVacaciones.model.Employee;
 import com.kiko.proyectoVacaciones.model.Event;
+import com.kiko.proyectoVacaciones.model.TeamManager;
 import com.kiko.proyectoVacaciones.repository.EventRepository;
 import com.kiko.proyectoVacaciones.service.DeveloperService;
+import com.kiko.proyectoVacaciones.service.TeamManagerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,6 +27,10 @@ public class CalendarController {
     EventRepository er;
     @Autowired
 	DeveloperService developerService;
+    @Autowired
+    TeamManagerService teamManagerService;
+    
+    
     
     
 
@@ -32,6 +38,24 @@ public class CalendarController {
     @ResponseBody
     String home() {
         return "Welcome!";
+    }
+    
+    @GetMapping("/api/solicitudesEmpleados")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    Iterable<Event> solicitudesEmpleados(@RequestParam("start") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime start, @RequestParam("end") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime end) {
+		
+    	 String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    	 TeamManager teamManager = teamManagerService.findTeamManager(email);
+    	 Long id = teamManager.getIdEmployee();
+    	 
+    	return er.findEventsFromMyDevelopers(id);
+    	 
+    	
+    	
+    	
+    	
+        
+        
     }
 
     @GetMapping("/api/events")

@@ -14,5 +14,11 @@ public interface TeamManagerRepository extends JpaRepository<TeamManager,Long> {
 	List<Developer> findDeveloperByTmId(long id);
 	
 	TeamManager findFirstByEmail(String email);
+	
+	
+	
+	
+	@Query("SELECT d from Developer d where d.teamManager.idEmployee = ?1 AND d.event.color = '#ffe599' ")
+	List<Developer> findMyDevelopersById(long id);
 
 }

@@ -106,7 +106,7 @@
     nav.onTimeRangeSelected = function(args) {
         dp.startDate = args.day;
         dp.update();
-        dp.events.load("/api/events");
+        
     };
     nav.init();
 
@@ -242,7 +242,7 @@
     });
     dp.init();
 
-    dp.events.load("/api/events");
+    
 
 
     function updateColor(e, color) {

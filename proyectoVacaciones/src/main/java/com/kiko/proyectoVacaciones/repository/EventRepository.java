@@ -24,6 +24,9 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 	
 	@Query("SELECT e from Event e where e.developer.email = :email")
 	public List<Event> findEventForDeveloper(String email);
+	
+	@Query("SELECT e from Event e where e.developer.teamManager.idEmployee = :id")
+	public List<Event> findEventsFromMyDevelopers(long id);
 
 
 }

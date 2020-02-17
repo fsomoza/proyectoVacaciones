@@ -16,6 +16,7 @@ import com.kiko.proyectoVacaciones.model.Developer;
 import com.kiko.proyectoVacaciones.model.Employee;
 import com.kiko.proyectoVacaciones.model.Event;
 import com.kiko.proyectoVacaciones.model.TeamManager;
+import com.kiko.proyectoVacaciones.repository.EventRepository;
 import com.kiko.proyectoVacaciones.service.DeveloperService;
 import com.kiko.proyectoVacaciones.service.EmployeeService;
 import com.kiko.proyectoVacaciones.service.TeamManagerService;
@@ -25,6 +26,9 @@ import com.kiko.proyectoVacaciones.service.TeamManagerService;
 @Controller
 @RequestMapping("/public")
 public class ZonaPublicaController {
+	
+	@Autowired
+	EventRepository eventRepository;
 	
 	@Autowired
 	TeamManagerService teamManagerService;
@@ -58,6 +62,19 @@ String email = SecurityContextHolder.getContext().getAuthentication().getName();
 			model.addAttribute("developer", developer);	
 			return "blank";
 		}
+		
+	}
+	
+	
+	@GetMapping("/solicitudesEmpleados")
+	public String solicitudesEmpleados(Model model) {
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+		TeamManager teamManager = teamManagerService.findTeamManager(email);
+		long id = teamManager.getIdEmployee();
+		 List <Event> events =eventRepository.findEventsFromMyDevelopers(id);
+		 Event event = events.get(0);
+		model.addAttribute("teamManager", teamManager).addAttribute("event", event);	
+		return "solicitudesEmpleados";
 		
 	}
 	

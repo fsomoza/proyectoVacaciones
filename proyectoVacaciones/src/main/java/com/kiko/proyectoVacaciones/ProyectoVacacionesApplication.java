@@ -79,7 +79,7 @@ public class ProyectoVacacionesApplication {
 			
 	       usuario.setTeamManager(teamManager);
 			
-			
+			developer2.setTeamManager(teamManager);
 			
 			
 			usuario = service.insertarDeveloper(usuario);
