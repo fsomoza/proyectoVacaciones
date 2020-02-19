@@ -37,16 +37,7 @@ public class ZonaPublicaController {
 	
 	@Autowired
 	DeveloperService developerService;
-//	@Autowired
-//	ProductoServicio productoServicio;
-//	
-//	
-//	@ModelAttribute("productos")
-//	public List<Producto> productosNoVendidos() {
-//		return productoServicio.productosSinVender();
-//	}
-//	
-	
+
 	@GetMapping({"/", "/index"})
 	public String index(Model model, @RequestParam(name="q", required=false) String query) {
 String email = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -64,6 +55,17 @@ String email = SecurityContextHolder.getContext().getAuthentication().getName();
 		}
 		
 	}
+	
+	@GetMapping("/misSolicitudes")
+	public String misSolicitudes(Model model) {
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+		Developer developer = developerService.buscarPorEmail(email);
+		model.addAttribute("developer", developer);
+		return "misSolicitudes";
+		
+		
+	}
+	
 	
 	
 	@GetMapping("/solicitudesEmpleados")

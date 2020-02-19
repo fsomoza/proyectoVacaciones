@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 public class CalendarController {
@@ -71,6 +72,11 @@ public class CalendarController {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     Iterable<Event> rescuePendingEvent(){
     	String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    	
+    	
+    	
+    	
+    	
     	return er.findEventForDeveloper(email);
     	
     }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="../static/css/themeIndex.css"
+	th:href="@{/css/themeIndex.css}">
+</head>
+
+<body style="">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container"> <a class="navbar-brand" href="#">
+        <i class="fa d-inline fa-lg fa-stop-circle"></i>
+        <b> HOLY D</b>
+      </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar10">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar10">
+        <ul class="navbar-nav ml-auto">
+          <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link" th:href="@{/public/solicitudesEmpleados}">SOLICITUDES EMPLEADOS</a> </li>
+          <li sec:authorize="hasRole('ROLE_USER')" class="nav-item"> <a class="nav-link" th:href="@{/public/crearSolicitud}">Crear solicitud</a> </li>
+          <li sec:authorize="hasRole('ROLE_USER')" class="nav-item"> <a class="nav-link" href="#">Mis solicitudes</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="#">About</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="#">FAQ</a> </li>
+        </ul> <a href="javascript:document.getElementById('logoutForm').submit()" class="btn navbar-btn ml-md-2 btn-light text-dark">LOG OUT</a>
+      </div>
+      <form th:action="@{/auth/logout}" method="POST" id="logoutForm"></form>
+    </div>
+  </nav>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="">Mi perfil</h1>
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5" style="">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6" style="">
+        
+        <h1>Aqui tienes tus solicitudes y su estado</h1>
+        
+        </div>
+        <div class="col-md-6" style="">
+        <div class="table-responsive" >
+            <table class="table">
+              <thead>
+                <tr>
+                  
+                  <th>Fecha inicio</th>
+                  <th>Fecha final</th>
+                  <th>Estado</th>
+                  
+                  
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  
+                  <td><span th:text="${{developer.event.start}}"></td>
+                  <td><span th:text="${{developer.event.end}}"></td>
+                  
+                  
+                  <td>  <span th:if="${developer.event.color == '#ffe599'}">Pendiente</span>
+                        
+                        <span th:unless="${developer.event.color == '#ffe599'}">Aprobado</span></td>
+                  
+                </tr>
+             
+                
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">© HOLY D. All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
+ </body>
+
+</html>
