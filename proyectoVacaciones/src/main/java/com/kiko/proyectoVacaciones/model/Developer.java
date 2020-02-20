@@ -14,6 +14,8 @@ public class Developer extends Employee {
 	@ManyToOne 
     TeamManager teamManager;
 	
+	
+	
 	@OneToOne
 	@JoinColumn(name="eventId")
 	Event event;

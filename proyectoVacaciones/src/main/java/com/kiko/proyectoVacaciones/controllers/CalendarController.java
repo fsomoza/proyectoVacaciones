@@ -113,7 +113,7 @@ public class CalendarController {
        
        Event e = er.findComoYoTeDigo(params.id);
        System.out.println(e.toString());
-       
+       e.setColor("#ffe599");
         e.setStart(params.start);
         e.setEnd(params.end);
         er.save(e);

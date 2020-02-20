@@ -69,10 +69,10 @@
                   <td><span th:text="${{developer.event.end}}"></td>
                   
                   
-                  <td>  <span th:if="${developer.event.color == '#ffe599'}">Pendiente</span>
-                        
-                        <span th:unless="${developer.event.color == '#ffe599'}">Aprobado</span></td>
-                  
+                  <td>  <span th:if="${developer.event.color == '#ffe599'}">Pendiente</span> 
+                  <span th:if="${developer.event.color == '#008000'}">Aprobado</span>
+                  <span th:if="${developer.event.color == '#8B0000'}">Denegado</span></td>
+                   
                 </tr>
              
                 

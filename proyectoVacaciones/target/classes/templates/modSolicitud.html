@@ -36,7 +36,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1 class=""> <span th:text="${'Bienvenido ' + developer.name + ', ya tienes una solicitud en estado pendiente, puedes modificarla o anularla.'}"></span></h1>
+          <h1 class=""> <span th:if="${developer.event.color != '#008000'}" th:text="${'Bienvenido ' + developer.name + ', ya tienes una solicitud en estado pendiente o anulada, puedes modificarla o anularla.'}"></span>
+                         <span th:if="${developer.event.color == '#008000'}" th:text="${'Tu solicitud ha sido aprobada, disfruta de tus vacaciones!'}"></span>
+            </h1>
         </div>
         <div class="col-md-6"></div>
       </div>

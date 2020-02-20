@@ -134,26 +134,12 @@ nav.init();
                 onClick: function(args) { updateColor(args.source, args.item.color); }
             },
             {
-                text: "Denegar",
-                onClick: function(args) {
-                    var e = args.source;
-                    var params = {
-                        id: e.id()
-                    };
-                    $.ajax({
-                        type: 'POST',
-                        url: '/api/events/delete',
-                        data: JSON.stringify(params),
-                        success: function (data) {
-                            dp.events.remove(e);
-                            dp.message("Deleted");
-                            window.location.href = "/public/index";
-                        },
-                        contentType: "application/json",
-                        dataType: 'json'
-                    });
-                }
+            	text: "Denegar",
+                icon: "red icon-red",
+                color: "#8B0000",
+                onClick: function(args) { updateColor(args.source, args.item.color); }
             },
+            
             {
                 text: "-"
             },
